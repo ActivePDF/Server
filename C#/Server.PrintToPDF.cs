@@ -32,12 +32,12 @@ namespace ServerExamples
                 //static activePDF Server printer or call server.NewPrinterName
                 // to dynamically create a new printer on the fly. This example
                 // simply calls server.TestPrintToPDF for testing purposes
-                result = server.TestPrintToPDF("Hello World!");
+                result = server.TestPrintToPDF(sampleText: "Hello World!");
                 if (result.ServerStatus ==
                     ServerDK.Results.ServerStatus.Success)
                 {
                     // Wait(seconds) for job to complete
-                    result = server.EndPrintToPDF(30);
+                    result = server.EndPrintToPDF(waitTime: 30);
                 }
             }
 

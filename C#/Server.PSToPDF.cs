@@ -1,5 +1,5 @@
 // Copyright (c) 2019 ActivePDF, Inc.
-// ActivePDF Server
+// ActivePDF WebGrabber
 
 using System;
 
@@ -18,33 +18,11 @@ namespace ServerExamples
             // Instantiate Object
             APServer.Server server = new APServer.Server();
 
-            // Path and filename of output
-            server.NewDocumentName = "Server.WordPrinting.pdf";
-            server.OutputDirectory = strPath;
-
-            // Start the print job
-            ServerDK.Results.ServerResult result = server.BeginPrintToPDF();
-            if (result.ServerStatus == ServerDK.Results.ServerStatus.Success)
-            {
-                // Automate Word to print a document to Server
-                // NOTE: You must add the 'Microsoft.Office.Interop.Word'
-                // reference
-                Microsoft.Office.Interop.Word._Application oWORD =
-                    new Microsoft.Office.Interop.Word.Application();
-                oWORD.ActivePrinter = server.NewPrinterName;
-                oWORD.DisplayAlerts =
-                    Microsoft.Office.Interop.Word.WdAlertLevel.wdAlertsNone;
-                oWORD.Visible = false;
-                Microsoft.Office.Interop.Word.Document oDOC =
-                    oWORD.Documents.Open($"{strPath}Server.Word.Input.doc");
-                oDOC.Activate();
-                oWORD.PrintOut();
-                oWORD.Documents.Close();
-                oWORD.Quit();
-
-                // Wait(seconds) for job to complete
-                result = server.EndPrintToPDF(waitTime: 30);
-            }
+            // Convert the PostScript file into PDF
+            ServerDK.Results.ServerResult result =
+                server.ConvertPSToPDF(
+                    PSFile: $"{strPath}Server.Input.ps",
+                    PDF: $"{strPath}Server.PSToPDF.pdf");
 
             // Output result
             WriteResult(result);

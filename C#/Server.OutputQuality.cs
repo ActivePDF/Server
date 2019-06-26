@@ -81,8 +81,8 @@ namespace ServerExamples
             // Convert the PostScript file into PDF
             ServerDK.Results.ServerResult result =
                 server.ConvertPSToPDF(
-                    $"{strPath}Server.Input.ps",
-                    $"{strPath}Server.OutputQuality.pdf");
+                    PSFile: $"{strPath}Server.Input.ps",
+                    PDF: $"{strPath}Server.OutputQuality.pdf");
 
             // Output result
             WriteResult(result);

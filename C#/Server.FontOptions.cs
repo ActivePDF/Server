@@ -14,7 +14,7 @@ namespace ServerExamples
         {
             string strPath =
                System.AppDomain.CurrentDomain.BaseDirectory.Replace("\\", "/");
-            
+
             // Instantiate Object
             APServer.Server server = new APServer.Server();
 
@@ -40,8 +40,8 @@ namespace ServerExamples
             // Convert the PostScript file into PDF
             ServerDK.Results.ServerResult result =
                 server.ConvertPSToPDF(
-                    $"{strPath}Server.Input.ps",
-                    $"{strPath}Server.FontOptions.pdf");
+                    PSFile: $"{strPath}Server.Input.ps",
+                    PDF: $"{strPath}Server.FontOptions.pdf");
 
             // Output result
             WriteResult(result);

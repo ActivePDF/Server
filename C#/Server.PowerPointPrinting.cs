@@ -48,7 +48,7 @@ namespace ServerExamples
                 oPPT.Quit();
 
                 // Wait(seconds) for job to complete
-                result = server.EndPrintToPDF(30);
+                result = server.EndPrintToPDF(waitTime: 30);
             }
 
             // Output result

@@ -23,16 +23,16 @@ namespace ServerExamples
 
             // Set the basic metadata in the created PDF
             server.SetMetadata(
-                "John Doe",
-                "examples, samples, metadata",
-                "Examples",
-                "ActivePDF Metadata Example");
+                author: "John Doe",
+                keywords: "examples, samples, metadata",
+                subject: "Examples",
+                title: "ActivePDF Metadata Example");
 
             // Convert the PostScript file into PDF
             ServerDK.Results.ServerResult result =
                 server.ConvertPSToPDF(
-                    $"{strPath}Server.Input.ps",
-                    $"{strPath}Server.SetMetadata.pdf");
+                    PSFile: $"{strPath}Server.Input.ps",
+                    PDF: $"{strPath}Server.SetMetadata.pdf");
 
             // Output result
             WriteResult(result);

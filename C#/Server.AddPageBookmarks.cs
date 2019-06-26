@@ -14,7 +14,7 @@ namespace ServerExamples
         {
             string strPath =
                System.AppDomain.CurrentDomain.BaseDirectory.Replace("\\", "/");
-            
+
             // Instantiate Object
             APServer.Server server = new APServer.Server();
 
@@ -22,14 +22,16 @@ namespace ServerExamples
             server.OutputDirectory = strPath;
 
             // Add bookmarks to pages in the PDF
-            server.AddPageBookmark("Page 1", 0, 1, "Fit");
-            server.AddPageBookmark("Page 2", 0, 2, "Fit");
+            server.AddPageBookmark(Title: "Page 1", subCount: 0,
+                                   PageNbr: 1, View: "Fit");
+            server.AddPageBookmark(Title: "Page 2", subCount: 0,
+                                   PageNbr: 2, View: "Fit");
 
             // Convert the PostScript file into PDF
             ServerDK.Results.ServerResult result =
                 server.ConvertPSToPDF(
-                    $"{strPath}Server.Input.ps",
-                    $"{strPath}Server.AddPageBookmark.pdf");
+                    PSFile: $"{strPath}Server.Input.ps",
+                    PDF: $"{strPath}Server.AddPageBookmark.pdf");
 
             // Output result
             WriteResult(result);
