@@ -19,13 +19,13 @@ namespace ServerExamples
             APServer.Server server = new APServer.Server();
 
             // Setup the FTP request supplying credentials if needed
-            server.AddFTPRequest("#.#.#.#", "/folder");
-            server.SetFTPCredentials("john.doe", "asdfasdf");
+            server.AddFTPRequest(hostAddress: "#.#.#.#", targetDirectory: "/folder");
+            server.SetFTPCredentials(user: "john.doe", password: "asdfasdf");
 
             // Set which files will upload with the FTP request
             // To attach a binary file use AddFTPBinaryAttachment
             server.FTPAttachOutput = true;
-            server.AddFTPAttachment($"{strPath}Server.Input.ps");
+            server.AddFTPAttachment(Filename: $"{strPath}Server.Input.ps");
 
             // Convert the PostScript file into PDF
             ServerDK.Results.ServerResult result =
